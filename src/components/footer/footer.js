@@ -7,7 +7,7 @@ export const FooterContainer = ({ className }) => {
 	const [weather, setWeather] = useState('');
 	useEffect(() => {
 		fetch(
-			'https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&lang=ru&appid={f404758a05cfe440a8ca3b2c7f222608}',
+			'https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&lang=ru&appid=f404758a05cfe440a8ca3b2c7f222608',
 		)
 			.then((res) => res.json())
 			.then(({ name, main, weather }) => {
@@ -25,10 +25,11 @@ export const FooterContainer = ({ className }) => {
 			<div>
 				<div>
 					{new Date().toLocaleString('ru', { day: 'numeric', month: 'long' })}
+					{', '}
 					{city}
 				</div>
 				<div>
-					{temperature} градусов, {weather}
+					{temperature} °C, {weather}
 				</div>
 			</div>
 		</div>
