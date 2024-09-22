@@ -91,5 +91,40 @@
       "published_at": "2046-05-12"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": "5a83",
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "2058-05-01 22:52",
+      "content": "12345"
+    },
+    {
+      "id": "8928",
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "2052-09-27 07:28",
+      "content": ""
+    },
+    {
+      "id": "2461",
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "2064-08-21 02:45",
+      "content": "Новый комментарий"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "639f",
+      "hash": "0.82785772307559235549945242382818832993507385253906",
+      "user": {
+        "id": "001",
+        "login": "Nikita",
+        "password": "qwerty123",
+        "registeredAt": "2050-09-04",
+        "roleId": 0
+      }
+    }
+  ]
 }

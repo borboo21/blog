@@ -1,21 +1,31 @@
 import styled from 'styled-components';
-import { H2 } from '../../components';
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { PostContent, Comments } from './components';
+import { useServerRequest } from '../../hooks';
+import { loadPostAsync } from '../../actions';
+import { selectPost } from '../../selectors';
 
-const PostContainer = (className) => {
-	const post = useSelector(selector);
+const PostContainer = ({ className }) => {
+	const dispatch = useDispatch();
+	const params = useParams();
+	const requestServer = useServerRequest();
+	const post = useSelector(selectPost);
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		dispatch(loadPostAsync(requestServer, params.id));
+	}, [requestServer, dispatch, params.id]);
 
 	return (
 		<div className={className}>
-			<PostContent />
-			<Comments />
-			<H2>Пользователи</H2>
-			<div></div>
+			<PostContent post={post} />
+			<Comments comments={post.comments} postId={post.id} />
 		</div>
 	);
 };
 
-export const Post = styled(Post)``;
+export const Post = styled(PostContainer)`
+	margin: 40px 0;
+	padding: 0 80px;
+`;

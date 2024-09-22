@@ -11,7 +11,6 @@ const UsersContainer = ({ className }) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
 	const requestServer = useServerRequest();
-	console.log(shouldUpdateUserList);
 
 	useEffect(() => {
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(

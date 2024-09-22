@@ -1,7 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header, Footer } from './components';
-import { Authorization, Registration, Users } from './pages';
+import { Authorization, Post, Registration, Users } from './pages';
+import { useLayoutEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { setUser } from './actions';
 
 const AppColumn = styled.div`
 	display: flex;
@@ -14,10 +17,22 @@ const AppColumn = styled.div`
 `;
 
 const Page = styled.div`
-	padding: 120px 0;
+	padding: 120px 0 20px;
 `;
 
 export const Blog = () => {
+	const dispatch = useDispatch();
+	useLayoutEffect(() => {
+		const currentUserDataJSON = sessionStorage.getItem('userData');
+		if (!currentUserDataJSON) {
+			return;
+		}
+
+		const currentUserData = JSON.parse(currentUserDataJSON);
+
+		dispatch(setUser({ ...currentUserData, roleId: Number(currentUserData.roleId) }));
+	}, [dispatch]);
+
 	return (
 		<AppColumn>
 			<Header />
@@ -27,7 +42,7 @@ export const Blog = () => {
 					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<Registration />} />
 					<Route path="/users" element={<Users />} />
-					<Route path="/post/:postId" element={<div>Cтатья</div>} />
+					<Route path="/post/:id" element={<Post />} />
 					<Route path="/post" element={<div>Новая статья</div>} />
 					<Route path="*" element={<div>Ошибка</div>} />
 				</Routes>

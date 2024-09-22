@@ -61,13 +61,13 @@ const AuthorizationContainer = ({ className }) => {
 
 	const onSubmit = ({ login, password }) => {
 		server.authorize(login, password).then(({ error, res }) => {
-			console.log(error, res);
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
 				return;
 			}
 
 			dispatch(setUser(res));
+			sessionStorage.setItem('userData', JSON.stringify(res));
 		});
 	};
 
