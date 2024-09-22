@@ -1,10 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
-import { Header, Footer } from './components';
-import { Authorization, Post, Registration, Users } from './pages';
 import { useLayoutEffect } from 'react';
-import styled from 'styled-components';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Header, Footer, Modal } from './components';
+import { Authorization, Post, Registration, Users } from './pages';
 import { setUser } from './actions';
+import styled from 'styled-components';
 
 const AppColumn = styled.div`
 	display: flex;
@@ -48,6 +48,7 @@ export const Blog = () => {
 				</Routes>
 			</Page>
 			<Footer />
+			<Modal />
 		</AppColumn>
 	);
 };
