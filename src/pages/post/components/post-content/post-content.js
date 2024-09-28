@@ -34,10 +34,11 @@ const PostContentContainer = ({
 export const PostContent = styled(PostContentContainer)`
 	& img {
 		float: left;
-		margin: 0 20px 10px 0;
+		margin: 0 20px 10px;
 	}
 	& .post-text {
 		font-size: 18px;
 		white-space: pre-line;
+		padding: 20px;
 	}
 `;
