@@ -6,6 +6,13 @@
       "password": "qwerty123",
       "registred_at": "2050-09-04",
       "role_id": 0
+    },
+    {
+      "login": "Ivan",
+      "password": "123456",
+      "registred_at": "2039-06-02 19:51",
+      "role_id": 1,
+      "id": "zDQEU3u"
     }
   ],
   "roles": [
@@ -148,15 +155,15 @@
       }
     },
     {
-      "hash": "0.98312245913332874103218728123465552926063537597656",
+      "hash": "0.34866418575415281111418153159320354461669921875000",
       "user": {
-        "id": "001",
-        "login": "Nikita",
-        "password": "qwerty123",
-        "registeredAt": "2050-09-04",
-        "roleId": 0
+        "id": "zDQEU3u",
+        "login": "Ivan",
+        "password": "123456",
+        "registeredAt": "2039-06-02 19:51",
+        "roleId": 1
       },
-      "id": "xBQXedN"
+      "id": "xutNARk"
     }
   ]
 }
