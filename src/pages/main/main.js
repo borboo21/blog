@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useServerRequest } from '../../hooks';
 import styled from 'styled-components';
 import { Pagination, PostCard, Search } from './components';

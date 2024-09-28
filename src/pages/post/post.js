@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { useMatch, useParams } from 'react-router-dom';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,8 @@ import { loadPostAsync, RESET_POST_DATA } from '../../actions';
 import { selectPost } from '../../selectors';
 import { Error, PrivateContent } from '../../components';
 import { ROLE } from '../../constants';
+import styled from 'styled-components';
+import { TableRow } from '../users/components';
 
 const PostContainer = ({ className }) => {
 	const [error, setError] = useState(null);
@@ -59,3 +61,7 @@ export const Post = styled(PostContainer)`
 	margin: 40px 0;
 	padding: 0 80px;
 `;
+
+TableRow.propTypes = {
+	children: PropTypes.node.isRequired,
+};

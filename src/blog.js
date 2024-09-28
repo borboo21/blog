@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Header, Footer, Modal, Error } from './components';
 import { Authorization, Main, Post, Registration, Users } from './pages';
 import { setUser } from './actions';
-import styled from 'styled-components';
 import { ERROR } from './constants';
+import styled from 'styled-components';
 
 const AppColumn = styled.div`
 	display: flex;
