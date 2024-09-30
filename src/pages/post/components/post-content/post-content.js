@@ -17,12 +17,12 @@ const PostContentContainer = ({
 			<SpecialPanel
 				id={id}
 				publishedAt={publishedAt}
-				margin="-20px 0 20px"
+				margin="-20px 20px 20px"
 				editButton={
 					<Icon
 						id="fa-pencil-square-o"
 						size="21px"
-						margin="0 10px 0 0"
+						margin="0 5px 0 0"
 						onClick={() => navigate(`/post/${id}/edit`)}
 					/>
 				}
