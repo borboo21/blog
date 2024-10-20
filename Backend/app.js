@@ -9,10 +9,18 @@ const {
 	updateUser,
 	deleteUser,
 } = require('./controllers/user');
+const {
+	addPost,
+	editPost,
+	deletePost,
+	getPost,
+	getPosts,
+} = require('./controllers/post');
 const mapUser = require('./helpers/mapUser');
 const auth = require('./middlewares/auth');
 const hasRole = require('./middlewares/hasRole');
 const ROLES = require('./constants/roles');
+const mapPost = require('./helpers/mapPost');
 
 const port = 3001;
 
@@ -51,7 +59,49 @@ app.post('/logout', (req, res) => {
 	res.cookie('token', '', { httpOnly: true }).send({});
 });
 
+app.get('/posts', async (req, res) => {
+	const { posts, lastPage } = await getPosts(
+		req.query.search,
+		req.query.limit,
+		req.query.page,
+	);
+
+	res.send({ data: { lastPage, posts: posts.map(mapPost) } });
+});
+
+app.get('/posts/:id', async (req, res) => {
+	const post = await getPost(req.params.id);
+
+	res.send({ data: mapPost(post) });
+});
+
 app.use(auth);
+
+app.post('/posts', hasRole([ROLES.ADMIN]), async (req, res) => {
+	const newPost = await addPost({
+		title: req.body.title,
+		content: req.body.content,
+		image: req.body.imageUrl,
+	});
+
+	res.send({ data: mapPost(newPost) });
+});
+
+app.patch('/posts/:id', hasRole([ROLES.ADMIN]), async (req, res) => {
+	const updatedPost = await editPost(req.params.id, {
+		title: req.body.title,
+		content: req.body.content,
+		image: req.body.imageUrl,
+	});
+
+	res.send({ data: mapPost(updatedPost) });
+});
+
+app.delete('/posts/:id', hasRole([ROLES.ADMIN]), async (req, res) => {
+	await deletePost(req.params.id);
+
+	res.send({ error: null });
+});
 
 app.get('/users', hasRole([ROLES.ADMIN]), async (req, res) => {
 	const users = await getUsers();
