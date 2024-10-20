@@ -13,6 +13,8 @@ app.use(express.json());
 
 app.use('/', routes);
 
+app.use(express.static('../build'));
+
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
 	app.listen(port, () => {
 		console.log(`Server started on port ${port}`);
