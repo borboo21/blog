@@ -3,13 +3,12 @@ import { useMatch, useParams } from 'react-router-dom';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PostContent, Comments, PostForm } from './components';
-import { useServerRequest } from '../../hooks';
 import { loadPostAsync, RESET_POST_DATA } from '../../actions';
 import { selectPost } from '../../selectors';
 import { Error, PrivateContent } from '../../components';
 import { ROLE } from '../../constants';
-import styled from 'styled-components';
 import { TableRow } from '../users/components';
+import styled from 'styled-components';
 
 const PostContainer = ({ className }) => {
 	const [error, setError] = useState(null);
@@ -18,7 +17,6 @@ const PostContainer = ({ className }) => {
 	const params = useParams();
 	const isEditing = !!useMatch('/post/:id/edit');
 	const isCreating = !!useMatch('/post');
-	const requestServer = useServerRequest();
 	const post = useSelector(selectPost);
 
 	useLayoutEffect(() => {
@@ -30,11 +28,11 @@ const PostContainer = ({ className }) => {
 			setIsLoading(false);
 			return;
 		}
-		dispatch(loadPostAsync(requestServer, params.id)).then((postData) => {
+		dispatch(loadPostAsync(params.id)).then((postData) => {
 			setError(postData.error);
 			setIsLoading(false);
 		});
-	}, [requestServer, dispatch, params.id, isCreating]);
+	}, [dispatch, params.id, isCreating]);
 
 	if (isLoading) {
 		return null;
