@@ -15,7 +15,7 @@ async function addPost(post) {
 async function editPost(id, post) {
 	const newPost = await Post.findByIdAndUpdate(id, post, { returnDocument: 'after' });
 
-	await newPost.populat({
+	await newPost.populate({
 		path: 'comments',
 		populate: 'author',
 	});

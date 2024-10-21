@@ -8,7 +8,7 @@ module.exports = function (post) {
 		imageUrl: post.image,
 		content: post.content,
 		comments: post.comments.map((comment) =>
-			mongoose.isObjectIdOrHexString(comment) ? comment : mapComment,
+			mongoose.isObjectIdOrHexString(comment) ? comment : mapComment(comment),
 		),
 		publishedAt: post.createdAt,
 	};

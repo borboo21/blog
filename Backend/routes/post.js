@@ -71,7 +71,7 @@ router.patch('/:id', auth, hasRole([ROLES.ADMIN]), async (req, res) => {
 	res.send({ data: mapPost(updatedPost) });
 });
 
-router.delete('/posts/:id', auth, hasRole([ROLES.ADMIN]), async (req, res) => {
+router.delete('/:id', auth, hasRole([ROLES.ADMIN]), async (req, res) => {
 	await deletePost(req.params.id);
 
 	res.send({ error: null });
