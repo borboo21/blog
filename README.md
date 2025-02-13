@@ -2,7 +2,7 @@
 
 Полнофункциональный fullstack проект с возможностью постить, комментировать, назначать роли пользователям.
 
-![Desktop2025 02 09-08 47 26 02-ezgif com-instagif](https://github.com/user-attachments/assets/cee0e31e-b40d-4d9c-8239-e0553e132296)
+![Desktop2025 02 09-08 47 26 02-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1c34652f-2503-4fb1-bf79-3ff675ebd770)
 
 # 📌 Особенности:
 
